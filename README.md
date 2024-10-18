@@ -1,8 +1,8 @@
-# Halloween Greetings
+# Happy Halloween
 
 ## Descripción
 
-Halloween Greetings es una aplicación que permite enviar felicitaciones personalizadas de Halloween a amigos. Los usuarios pueden seleccionar una imagen, transformarla utilizando efectos de Halloween y añadir un mensaje antes de enviarla.
+Happy Halloween es una aplicación que permite enviar felicitaciones personalizadas de Halloween a amigos. Los usuarios pueden seleccionar una imagen, transformarla utilizando efectos de Halloween y añadir un mensaje antes de enviarla.
 
 ## Funcionalidades
 
@@ -17,9 +17,9 @@ Halloween Greetings es una aplicación que permite enviar felicitaciones persona
 - **Frontend**: Astro
 - **Almacenamiento de Imágenes**: Cloudinary
 
-All commands are run from the root of the project, from a terminal:
+Todos los comandos se ejecutan desde la raíz del proyecto, desde una terminal:
 
-| Command         | Action                                      |
+| comando         | Acción                                      |
 | :-------------- | :------------------------------------------ |
 | `npm install`   | Installs dependencies                       |
 | `npm run dev`   | Starts local dev server at `localhost:4321` |
