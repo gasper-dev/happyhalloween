@@ -21,39 +21,42 @@ const url = await getCldImageUrl({
 ---
 
 <Layout title="Ghosts Alert Image">
-  <section class="relative h-screen">
+  <section
+    class="relative min-h-[450px] max-w-7xl mx-auto h-screen items-center"
+  >
     <div
-      class="min-w-[320px] relative max-w-xl h-[650px] sm:h-[750px] md:h-[95%] md:max-w-6xl lg:h-[100%] grid justify-items-center overflow-hidden mx-auto"
+      class="relative h-[500px] lg:h-[750px] md:h-[610px] pt-5 grid justify-items-center overflow-hidden mx-auto"
     >
       <img
         src="/home-point.png"
         alt="img"
-        class="points block max-w-full w-full h-full object-cover object-center"
+        class="points absolute inset-0 mx-auto max-w-full h-auto object-cover"
       />
       <img
         id="myImage"
         src="/frames/hp1.svg"
         alt="img"
-        class="moon block max-w-full min-w-[550px] h-auto absolute bottom-[20rem] sm:bottom-[25rem] w-[720px]"
+        class="moon absolute mx-auto max-w-full md:h-[450px] h-[450px] bottom-[8rem] md:bottom-[15rem] lg:h-[750px] lg:bottom-[8rem] object-cover"
       />
       <img
-        src={url}
+        src="/p1.png"
         alt="img"
-        class="house block absolute w-[35%] bottom-[20rem] max-w-full sm:w-[35%] sm:bottom-[20rem] lg:bottom-[15rem]"
+        class="house absolute mx-auto max-w-full h-[250px] bottom-[8rem] md:bottom-[5rem] md:h-[350px] lg:h-[350px] lg:bottom-[12rem] object-cover"
       />
       <img
         src="/mountainForest.svg"
         alt="img"
-        class="mountainForest block max-w-full md:bottom-[10rem] lg:bottom-[4rem] h-auto absolute bottom-[16rem]"
+        class="mountainForest block absolute mx-auto object-cover h-[580px] bottom-[0rem] md:h-[550px] lg:h-[850px] md:bottom-[0rem] lg:bottom-[0rem]"
       />
       <img
         src="/eyeColor.svg"
         alt="img"
-        class="eyeColor absolute block max-w-full md:bottom-[10rem] lg:bottom-[4rem] h-auto bottom-[16rem] w-[980px]"
+        class="eyeColor absolute mx-auto max-w-full h-[580px] bottom-[0rem] md:bottom-[0rem] lg:bottom-[2rem] md:h-[550px] object-cover"
       />
     </div>
+
     <div
-      class="data absolute left-0 grid grid-rows-2 gap-2 lg:bottom-[2rem] right-0 bottom-[18rem] sm:bottom-[12rem] text-center justify-center"
+      class="w-full flex gap-2 flex-col items-center justify-center text-center"
     >
       <Button id="nextBtn" title="Next title" />
       <CopyButton id="copyUrlBtn" title="Copy Share" />
@@ -83,7 +86,7 @@ const url = await getCldImageUrl({
     const { searchParams } = new URL(window.location.href);
     const id = searchParams.get("id");
     if (id) {
-      const urlToCopy = `/happy?id=${id}&text=${index}`;
+      const urlToCopy = `https://happyhalloween-tau.vercel.app/happy?id=${id}&text=${index}`;
       navigator.clipboard
         .writeText(urlToCopy)
         .then(() => {
