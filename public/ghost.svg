@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="3508px" height="2480px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 3508 2480">
+  <defs>
+    <style type="text/css">
+      <![CDATA[
+        .fil2 {fill:#676764}
+        .fil1 {fill:#9CF2FF}
+        .fil3 {fill:#EDC917}
+        .fil0 {fill:#F7F8FA}
+      ]]>
+    </style>
+  </defs>
+  <g id="Capa_x0020_1">
+    <metadata id="CorelCorpID_0Corel-Layer"/>
+    <g id="GOST">
+      <g id="cuerpo">
+        <path class="fil0" d="M1701 2157l-2 1 39 7c0,-16 -3,-50 -3,-67 1,16 4,39 8,54 2,7 17,6 23,7 8,1 16,2 24,4 26,3 32,7 31,-25 0,-9 -4,-55 -3,-59l1 0 10 75c12,-5 25,-30 44,-31l-172 34z"/>
+        <path class="fil1" d="M1706 2159c6,-3 -2,-39 -3,-46 -5,-48 -5,-110 3,-157 24,-70 96,-55 161,-35 -15,-55 -99,-52 -126,-41 -30,13 -43,37 -48,68 -11,63 -2,125 6,188 1,8 1,8 7,23z"/>
+        <path class="fil0" d="M1699 2158c6,-3 -4,-38 -5,-45 -6,-48 -10,-111 -2,-158 12,-72 70,-92 136,-71 77,29 53,177 45,241l-174 33zm49 -212c4,-10 22,-9 25,-2 4,1 14,34 -6,27 -10,-3 -27,-12 -19,-25zm47 3c2,-14 21,-20 27,-11 7,3 4,17 -2,22 -4,3 -18,10 -23,8l-2 0 0 -19z"/>
+      </g>
+      <g id="sejas">
+        <path class="fil2" d="M1795 1949c4,-4 4,-6 10,-9 7,-3 10,-2 17,-2 -6,-9 -25,-3 -27,11z"/>
+        <path class="fil2" d="M1748 1946c11,-5 14,-6 25,-2 -3,-7 -21,-8 -25,2z"/>
+      </g>
+      <g id="ojos">
+        <path class="fil3" d="M1800 1953l0 6 1 0c2,1 6,-1 8,-3 2,-1 2,-6 0,-7 -2,0 -3,-1 -5,0 -2,2 -2,2 -4,4z"/>
+        <path class="fil3" d="M1768 1954c-3,4 3,7 5,8 7,2 4,-8 2,-8 -3,-1 -4,-1 -7,0z"/>
+      </g>
+    </g>
+  </g>
+<animateTransform
+    attributeName="transform"
+    attributeType="XML"
+    type="translate"
+    from="0 0"
+    to="0 15"
+    dur="2s"
+    repeatCount="indefinite" 
+    additive="sum"/>
+    
+  <animate 
+    attributeName="opacity"
+    values="0;1;0"
+    dur="2s"
+    repeatCount="indefinite" />
+</svg>

@@ -1,0 +1,46 @@
+---
+import { CldUploadWidget } from "astro-cloudinary";
+import Button from "./Button.astro";
+---
+
+<div>
+  <CldUploadWidget
+    id="upload-events"
+    uploadPreset="GhostsAlert"
+    options={{
+      sources: ["local", "camera"],
+      multiple: false,
+      maxFiles: 1,
+      language: "es",
+      text: {
+        es: {
+          local: {
+            browse: "Seleccionar",
+            dd_title_single: "Arrastra y suelta una imagen aquí",
+          },
+          menu: { files: "My PC", camera: "Cámara" },
+        },
+        en: {
+          or: "o",
+        },
+      },
+    }}
+  >
+    <Button title="Please upload an image" />
+  </CldUploadWidget>
+</div>
+
+<script>
+  import { navigate } from "astro:transitions/client";
+  const widget = document.querySelector("#upload-events");
+  if (widget) {
+    widget.addEventListener("clduploadwidget:success", ((
+      e: CustomEvent<{ info: { public_id: string } }>
+    ) => {
+      const id_img_public = e.detail.info.public_id;
+      document.startViewTransition(() => {
+        navigate(`/photo?id=${id_img_public}`);
+      });
+    }) as EventListener);
+  }
+</script>

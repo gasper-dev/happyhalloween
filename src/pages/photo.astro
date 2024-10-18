@@ -1,0 +1,108 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCldImageUrl } from "astro-cloudinary/helpers";
+import Button from "../components/Button.astro";
+import CopyButton from "../components/CopyButton.astro";
+const { searchParams } = Astro.url;
+const id = searchParams.get("id");
+if (!id) return Astro.redirect("/");
+
+const url = await getCldImageUrl({
+  src: id,
+  removeBackground: true,
+  flags: "relative",
+  width: "500",
+  height: "500",
+  crop: "fill",
+  gravity: "auto",
+  aspectRatio: 0.5,
+  preserveTransformations: true,
+});
+---
+
+<Layout title="Ghosts Alert Image">
+  <section class="relative h-screen">
+    <div
+      class="min-w-[320px] relative max-w-xl h-[650px] sm:h-[750px] md:h-[95%] md:max-w-6xl lg:h-[100%] grid justify-items-center overflow-hidden mx-auto"
+    >
+      <img
+        src="/home-point.png"
+        alt="img"
+        class="points block max-w-full w-full h-full object-cover object-center"
+      />
+      <img
+        id="myImage"
+        src="/frames/hp1.svg"
+        alt="img"
+        class="moon block max-w-full min-w-[550px] h-auto absolute bottom-[20rem] sm:bottom-[25rem] w-[720px]"
+      />
+      <img
+        src={url}
+        alt="img"
+        class="house block absolute w-[35%] bottom-[20rem] max-w-full sm:w-[35%] sm:bottom-[20rem] lg:bottom-[15rem]"
+      />
+      <img
+        src="/mountainForest.svg"
+        alt="img"
+        class="mountainForest block max-w-full md:bottom-[10rem] lg:bottom-[4rem] h-auto absolute bottom-[16rem]"
+      />
+      <img
+        src="/eyeColor.svg"
+        alt="img"
+        class="eyeColor absolute block max-w-full md:bottom-[10rem] lg:bottom-[4rem] h-auto bottom-[16rem] w-[980px]"
+      />
+    </div>
+    <div
+      class="data absolute left-0 grid grid-rows-2 gap-2 lg:bottom-[2rem] right-0 bottom-[18rem] sm:bottom-[12rem] text-center justify-center"
+    >
+      <Button id="nextBtn" title="Next title" />
+      <CopyButton id="copyUrlBtn" title="Copy Share" />
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const myImage = document.getElementById("myImage") as HTMLImageElement;
+  const nextBtn = document.getElementById("nextBtn") as HTMLImageElement;
+  const copyUrlBtn = document.getElementById("copyUrlBtn") as HTMLImageElement;
+  const tooltip = document.getElementById("tooltip") as HTMLImageElement;
+
+  const happyHalloweenText = [];
+  for (let i = 1; i <= 3; i++) {
+    happyHalloweenText.push(`frames/hp${i}.svg`);
+  }
+
+  let index = 1;
+
+  nextBtn.addEventListener("click", () => {
+    index = (index + 1) % happyHalloweenText.length;
+    myImage.src = `frames/hp${index + 1}.svg`;
+  });
+
+  copyUrlBtn.addEventListener("click", () => {
+    const { searchParams } = new URL(window.location.href);
+    const id = searchParams.get("id");
+    if (id) {
+      const urlToCopy = `/happy?id=${id}&text=${index}`;
+      navigator.clipboard
+        .writeText(urlToCopy)
+        .then(() => {
+          showTooltip();
+        })
+        .catch((err) => {
+          console.error("Error al copiar: ", err);
+        });
+    }
+  });
+  function showTooltip() {
+    // Cambiar los atributos tooltip y aria
+    tooltip.setAttribute("data-visible", "true");
+    tooltip.setAttribute("aria-hidden", "false");
+
+    // Hide the tooltip after 2 seconds
+    setTimeout(() => {
+      tooltip.setAttribute("data-visible", "false");
+      tooltip.setAttribute("aria-hidden", "true");
+    }, 2000);
+  }
+</script>

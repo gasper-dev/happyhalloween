@@ -1,0 +1,130 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead title={title} />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  @font-face {
+    font-family: "spooky";
+    src: url("/fonts/spooky.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  :root {
+    --header-height: 3.5rem;
+    --first-color: hsl(0, 100%, 54%);
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(222, 100%, 2%);
+
+    --body-font: "Montserrat", sans-serif;
+    --second-font: "spooky", cursive;
+    --biggest-font-size: 3rem;
+    --big-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: 0.813rem;
+
+    --font-regular: 400;
+    --font-medium: 500;
+
+    --z-tooltip: 10;
+    --z-fixed: 100;
+  }
+
+  @media screen and (min-width: 1024px) {
+    :root {
+      --biggest-font-size: 5rem;
+      --big-font-size: 3.5rem;
+      --h2-font-size: 1.5rem;
+      --normal-font-size: 1rem;
+      --small-font-size: 0.875rem;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--black-color);
+    color: var(--white-color);
+  }
+
+  .titles {
+    color: var(--black-color);
+    font-family: var(--second-font);
+    font-weight: var(--font-regular);
+    text-shadow: 0 4px 8px var(--first-color);
+  }
+
+  .subtitle {
+    font-size: var(--big-font-size);
+  }
+  .title {
+    font-size: var(--biggest-font-size);
+  }
+</style>
+<script is:inline>
+  gsap.from(".points", 1.5, { opacity: 0, y: -300, delay: 0.4 });
+  gsap.from(".mountainForest", 1.5, {
+    opacity: 0,
+    y: 300,
+    delay: 0.2,
+    ease: "elastic.out(1,.5)",
+  });
+  gsap.from(".ghost", 1.5, {
+    opacity: 0,
+    y: -300,
+    delay: 0.6,
+    ease: "bounce.out",
+  });
+  gsap.from(".house", 1.5, {
+    opacity: 0,
+    y: 300,
+    delay: 0.8,
+    ease: "elastic.out(1,.5)",
+  });
+  gsap.from(".moon", 1.5, {
+    opacity: 0,
+    y: 300,
+    delay: 1.5,
+    ease: "elastic.out(1,.5)",
+  });
+  gsap.from(".titles", 1.5, {
+    opacity: 0,
+    y: -300,
+    delay: 1.5,
+    ease: "elastic.out(1,.5)",
+  });
+  gsap.from(".eyeColor", 1.5, {
+    opacity: 0,
+    y: 300,
+    delay: 2,
+    ease: "elastic.out(1,.5)",
+  });
+  gsap.from(".data", 1.5, {
+    opacity: 0,
+    y: 200,
+    delay: 0.2,
+    ease: "elastic.out(1,.5)",
+  });
+</script>

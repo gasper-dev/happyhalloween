@@ -1,0 +1,61 @@
+---
+import UploadWidget from "../components/UploadWidget.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Happy Halloween">
+  <div class="main overflow-hidden">
+    <section class="home relative h-screen">
+      <div
+        class="min-w-[320px] relative max-w-xl h-[750px] md:h-[95%] md:max-w-6xl lg:h-[90%] grid justify-items-center overflow-hidden mx-auto"
+      >
+        <img
+          src="/home-point.png"
+          alt="img"
+          class="points block max-w-full w-full h-full object-cover object-center"
+        />
+        <img
+          src="/home-moon.png"
+          alt="img"
+          class="moon block max-w-full min-w-[550px] h-auto absolute bottom-[25rem] w-[720px]"
+        />
+        <img
+          src="/house.svg"
+          alt="img"
+          class="house block max-w-full h-auto md:bottom-[12rem] lg:bottom-[8rem] absolute bottom-[16rem] w-[870px]"
+        />
+        <img
+          src="/mountainForest.svg"
+          alt="img"
+          class="mountainForest block max-w-full md:bottom-[10rem] lg:bottom-[4rem] h-auto absolute bottom-[16rem]"
+        />
+        <img
+          src="/eyeColor.svg"
+          alt="img"
+          class="eyeColor absolute block max-w-full md:bottom-[10rem] lg:bottom-[0rem] h-auto bottom-[11rem] w-[980px]"
+        />
+        <img
+          src="/ghost.svg"
+          alt="img"
+          class="ghost block max-w-full h-auto absolute bottom-[23rem] lg:bottom-[10rem] w-[300%]"
+        />
+        <div
+          class="titles absolute bottom-[32rem] lg:bottom-[33rem] md:bottom-[38rem] text-center"
+        >
+          <h2 class="subtitle">Happy</h2>
+          <h1 class="title">Halloween</h1>
+        </div>
+      </div>
+
+      <div
+        class="data absolute left-0 right-0 bottom-[12rem] lg:bottom-[14rem] text-center"
+      >
+        <p class="home__description mx-auto max-w-[500px] mb-8">
+          Send <span class="text-orange-400"> " Happy Halloween! " </span>to
+          your friend
+        </p>
+        <UploadWidget />
+      </div>
+    </section>
+  </div>
+</Layout>

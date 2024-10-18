@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  id?: string;
+}
+
+const { title, id } = Astro.props;
+---
+
+<div class="flex flex-wrap justify-center gap-y-4 gap-x-6">
+  <div
+    class="relative p-2 bg-yellow-200/40 hover:bg-yellow-200/50 backdrop-blur-2xl ring-1 ring-gray-950/25 rounded-md border border-white/5"
+  >
+    <div class="absolute inset-1 flex justify-between">
+      <div class="flex flex-col justify-between">
+        <div class="size-[3px] rounded-full bg-white/15"></div>
+        <div class="size-[3px] rounded-full bg-white/15"></div>
+      </div>
+      <div class="flex flex-col justify-between">
+        <div class="size-[3px] rounded-full bg-white/15"></div>
+        <div class="size-[3px] rounded-full bg-white/15"></div>
+      </div>
+    </div>
+
+    <button id={id} class="relative h-10 z-1">
+      {title}
+    </button>
+  </div>
+</div>

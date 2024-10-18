@@ -1,0 +1,56 @@
+---
+import MetaTags from "../components/MetaTags.astro";
+import Layout from "../layouts/Layout.astro";
+import { getCldImageUrl } from "astro-cloudinary/helpers";
+const { searchParams } = Astro.url;
+const id = searchParams.get("id");
+const img = searchParams.get("text");
+if (!id) return Astro.redirect("/");
+
+const url = await getCldImageUrl({
+  src: id,
+});
+---
+
+<Layout title="Happy Halloween my friend">
+  <MetaTags
+    slot="head"
+    title="Happy Halloween"
+    description="Your friend has sent you a 'Happy Halloween!'. Spooky."
+    ;
+    image={url}
+    large_image={url}
+  />
+  <section class="relative h-screen">
+    <div
+      class="min-w-[320px] relative max-w-xl h-[650px] sm:h-[750px] md:h-[95%] md:max-w-6xl lg:h-[100%] grid justify-items-center overflow-hidden mx-auto"
+    >
+      <img
+        src="/home-point.png"
+        alt="img"
+        class="points block max-w-full w-full h-full object-cover object-center"
+      />
+      <img
+        id="myImage"
+        src=`/frames/hp${img}.svg`
+        alt="img"
+        class="moon block max-w-full min-w-[550px] h-auto absolute bottom-[20rem] sm:bottom-[25rem] w-[720px]"
+      />
+      <img
+        src={url}
+        alt="img"
+        class="house block absolute w-[35%] bottom-[20rem] max-w-full sm:w-[35%] sm:bottom-[20rem] lg:bottom-[15rem]"
+      />
+      <img
+        src="/mountainForest.svg"
+        alt="img"
+        class="mountainForest block max-w-full md:bottom-[10rem] lg:bottom-[4rem] h-auto absolute bottom-[16rem]"
+      />
+      <img
+        src="/eyeColor.svg"
+        alt="img"
+        class="eyeColor absolute block max-w-full md:bottom-[10rem] lg:bottom-[4rem] h-auto bottom-[16rem] w-[980px]"
+      />
+    </div>
+  </section>
+</Layout>
