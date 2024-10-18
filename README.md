@@ -17,6 +17,14 @@ Happy Halloween es una aplicación que permite enviar felicitaciones personaliza
 - **Frontend**: Astro
 - **Almacenamiento de Imágenes**: Cloudinary
 
+## .env configuración
+
+- PUBLIC_CLOUDINARY_CLOUD_NAME=""
+
+- PUBLIC_CLOUDINARY_API_KEY=""
+
+- CLOUDINARY_API_SECRET=""
+
 Todos los comandos se ejecutan desde la raíz del proyecto, desde una terminal:
 
 | comando         | Acción                                      |
