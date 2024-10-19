@@ -1,23 +1,22 @@
 ---
 import MetaTags from "../components/MetaTags.astro";
 import Layout from "../layouts/Layout.astro";
-import { getCldImageUrl } from "astro-cloudinary/helpers";
+import { fetchImageTransform } from "../util/fetchImageTransform";
 const { searchParams } = Astro.url;
 const id = searchParams.get("id");
 const img = searchParams.get("text");
 if (!id) return Astro.redirect("/");
-
-const url = await getCldImageUrl({
-  src: id,
-  removeBackground: true,
-  flags: "relative",
-  width: "500",
-  height: "500",
-  crop: "fill",
-  gravity: "auto",
-  aspectRatio: 0.5,
-  preserveTransformations: true,
-});
+const { status, getUrl } = await fetchImageTransform(id);
+type StatusCode = 420 | 423 | 404;
+const redirects = {
+  420: () => Astro.redirect("/420"),
+  423: () => location.reload(),
+  404: () => Astro.redirect("/404"),
+};
+const action = redirects[status as StatusCode];
+if (action) {
+  return action();
+}
 ---
 
 <Layout title="Happy Halloween my friend">
@@ -27,8 +26,8 @@ const url = await getCldImageUrl({
     url=`https://happyhalloween-tau.vercel.app/happy?id=${id}&text=${img}`
     description="Your friend has sent you a 'Happy Halloween!'. Spooky."
     ;
-    image={url}
-    large_image={url}
+    image={getUrl}
+    large_image={getUrl}
   />
   <section
     class="relative min-h-[450px] max-w-7xl mx-auto h-screen items-center"
@@ -45,17 +44,17 @@ const url = await getCldImageUrl({
         id="myImage"
         src=`/frames/hp${img}.svg`
         alt="img"
-        class="moon absolute mx-auto max-w-full md:h-[450px] h-[450px] bottom-[8rem] md:bottom-[15rem] lg:h-[750px] lg:bottom-[8rem] object-cover"
+        class="moon absolute mx-auto max-w-full md:h-[450px] h-[450px] bottom-[4rem] md:bottom-[15rem] lg:h-[750px] lg:bottom-[8rem] object-cover"
       />
       <img
-        src={url}
+        src={getUrl}
         alt="img"
         class="house absolute mx-auto max-w-full h-[250px] bottom-[8rem] md:bottom-[5rem] md:h-[350px] lg:h-[350px] lg:bottom-[12rem] object-cover"
       />
       <img
         src="/mountainForest.svg"
         alt="img"
-        class="mountainForest block absolute mx-auto object-cover h-[580px] bottom-[0rem] md:h-[550px] lg:h-[850px] md:bottom-[0rem] lg:bottom-[0rem]"
+        class="mountainForest block absolute mx-auto object-cover h-[400px] bottom-[0rem] md:h-[550px] lg:h-[850px] md:bottom-[0rem] lg:bottom-[0rem]"
       />
       <img
         src="/eyeColor.svg"
