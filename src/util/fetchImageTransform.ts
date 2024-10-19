@@ -1,10 +1,6 @@
 import { getCldImageUrl } from "astro-cloudinary/helpers";
 
-export let loading: boolean;
-
 export async function fetchImageTransform(id: any) {
-  loading = true;
-
   try {
     const getUrl = await getCldImageUrl({
       src: id,
@@ -18,7 +14,7 @@ export async function fetchImageTransform(id: any) {
     });
 
     const response = await fetch(getUrl);
-    loading = false;
+
     if (!response.ok) {
       return { status: response.status };
     }

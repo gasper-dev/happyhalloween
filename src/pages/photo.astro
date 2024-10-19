@@ -2,8 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import CopyButton from "../components/CopyButton.astro";
-import { fetchImageTransform, loading } from "../util/fetchImageTransform";
-import { any } from "astro:schema";
+import { fetchImageTransform } from "../util/fetchImageTransform";
+
 const { searchParams } = Astro.url;
 const id = searchParams.get("id");
 if (!id) return Astro.redirect("/");
@@ -22,51 +22,49 @@ if (action) {
 ---
 
 <Layout title="Happy Halloween Template">
-  {
-    loading ? (
-      <section class="relative min-h-[450px] max-w-7xl mx-auto h-screen flex items-center justify-center">
-        <div class="loading-indicator">
-          <p>Cargando...</p>
-          <div class="spinner" />
-        </div>
-      </section>
-    ) : (
-      <section class="relative min-h-[450px] max-w-7xl mx-auto h-screen items-center">
-        <div class="relative h-[500px] lg:h-[750px] md:h-[610px] pt-5 grid justify-items-center overflow-hidden mx-auto">
-          <img
-            src="/home-point.png"
-            alt="img"
-            class="points absolute inset-0 mx-auto max-w-full h-auto object-cover"
-          />
-          <img
-            id="myImage"
-            src="/frames/hp1.svg"
-            alt="img"
-            class="moon absolute mx-auto max-w-full md:h-[450px] h-[450px] bottom-[8rem] md:bottom-[15rem] lg:h-[750px] lg:bottom-[8rem] object-cover"
-          />
-          <img
-            src={getUrl}
-            alt="img"
-            class="house absolute mx-auto max-w-full h-[250px] bottom-[4rem] md:bottom-[5rem] md:h-[350px] lg:h-[350px] lg:bottom-[12rem] object-cover"
-          />
-          <img
-            src="/mountainForest.svg"
-            alt="img"
-            class="mountainForest block absolute mx-auto object-cover h-[400px] bottom-[0rem] md:h-[550px] lg:h-[850px] md:bottom-[0rem] lg:bottom-[0rem]"
-          />
-          <img
-            src="/eyeColor.svg"
-            alt="img"
-            class="eyeColor absolute mx-auto max-w-full h-[580px] bottom-[0rem] md:bottom-[0rem] lg:bottom-[2rem] md:h-[550px] object-cover"
-          />
-        </div>
+  <section
+    class="relative min-h-[450px] max-w-7xl mx-auto h-screen items-center"
+  >
+    <div
+      class="relative h-[500px] lg:h-[750px] md:h-[610px] pt-5 grid justify-items-center overflow-hidden mx-auto"
+    >
+      <img
+        src="/home-point.png"
+        alt="img"
+        class="points absolute inset-0 mx-auto max-w-full h-auto object-cover"
+      />
+      <img
+        id="myImage"
+        src="/frames/hp1.svg"
+        alt="img"
+        class="moon absolute mx-auto max-w-full md:h-[450px] h-[450px] bottom-[8rem] md:bottom-[15rem] lg:h-[750px] lg:bottom-[8rem] object-cover"
+      />
+      <img
+        transition:name="ghost"
+        src={getUrl}
+        alt="img"
+        class="house absolute mx-auto max-w-full h-[250px] bottom-[4rem] md:bottom-[5rem] md:h-[350px] lg:h-[350px] lg:bottom-[12rem] object-cover"
+      />
+      <img
+        src="/mountainForest.svg"
+        alt="img"
+        class="mountainForest block absolute mx-auto object-cover h-[400px] bottom-[0rem] md:h-[550px] lg:h-[850px] md:bottom-[0rem] lg:bottom-[0rem]"
+      />
+      <img
+        src="/eyeColor.svg"
+        alt="img"
+        class="eyeColor absolute mx-auto max-w-full h-[580px] bottom-[0rem] md:bottom-[0rem] lg:bottom-[2rem] md:h-[550px] object-cover"
+      />
+    </div>
 
-        <div class="w-full flex gap-2 flex-col items-center justify-center text-center">
-          <Button id="nextBtn" title="Next title" />
-          <CopyButton id="copyUrlBtn" title="Copy Share" />
-        </div>
-      </section>
-    )
+    <div
+      class="w-full flex gap-2 flex-col items-center justify-center text-center"
+    >
+      <Button id="nextBtn" title="Next title" />
+      <CopyButton id="copyUrlBtn" title="Copy Share" />
+    </div>
+  </section>
+
   }
 </Layout>
 
