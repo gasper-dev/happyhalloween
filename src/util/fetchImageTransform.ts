@@ -16,6 +16,8 @@ export async function fetchImageTransform(id: any) {
       gravity: "auto",
       aspectRatio: 0.5,
     });
+    console.log(getUrl);
+
     const response = await fetch(getUrl);
     loading = false;
     if (!response.ok) {

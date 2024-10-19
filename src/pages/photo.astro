@@ -12,7 +12,7 @@ const { status, getUrl } = await fetchImageTransform(id);
 type StatusCode = 420 | 423 | 404;
 const redirects = {
   420: () => Astro.redirect("/420"),
-  423: () => location.reload(),
+  423: () => Astro.redirect(`/photo?id=${id}`),
   404: () => Astro.redirect("/404"),
 };
 const action = redirects[status as StatusCode];
