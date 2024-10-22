@@ -12,6 +12,10 @@ Happy Halloween es una aplicación que permite enviar felicitaciones personaliza
 - Vista previa de la imagen transformada.
 - Opción para compartir en redes sociales.
 
+## Image Example
+
+![HappyHalloween](/happydemo.png)
+
 ## Tecnologías Utilizadas
 
 - **Frontend**: Astro
